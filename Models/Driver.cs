@@ -10,11 +10,18 @@ namespace MyCloudLesson1.Models
     {
         
         public String id { get; set; }
+        public String ObjType { get; set; }
         public String driverName { get; set; }
         public int yearsInService { get; set; }
         public double age { get; set; }
         public Passengers[] passengers { get; set; }
         public CabStations[] stations { get; set; }
 
+
+        public Driver()
+        {
+            ObjType = GetType().Name;
+        }
     }
+    
 }

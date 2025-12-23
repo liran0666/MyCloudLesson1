@@ -124,7 +124,39 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.getDbsToJsonInsertBtn = new System.Windows.Forms.Button();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textboxtargil37table = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox_targil37AmountOfObjs = new System.Windows.Forms.TextBox();
+            this.textboxtargil37dbname = new System.Windows.Forms.TextBox();
+            this.button_targil37 = new System.Windows.Forms.Button();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox_targil36AmountOfObjs = new System.Windows.Forms.TextBox();
+            this.textBox_targil36selectDb = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.textBox_targil35 = new System.Windows.Forms.TextBox();
+            this.btn_targil35 = new System.Windows.Forms.Button();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.buttongetreqdoctargil45 = new System.Windows.Forms.Button();
+            this.docidtextboxtargil45 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboboxtbstargil45 = new System.Windows.Forms.ComboBox();
+            this.comboBoxdbstargil45 = new System.Windows.Forms.ComboBox();
+            this.btn_getdbsfortargil45 = new System.Windows.Forms.Button();
+            this.richTextBoxtargil45 = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.comboBox_targil38 = new System.Windows.Forms.ComboBox();
+            this.button_targil38 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -146,6 +178,15 @@
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // activation_Btn
@@ -170,6 +211,9 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Location = new System.Drawing.Point(23, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1234,6 +1278,301 @@
             this.getDbsToJsonInsertBtn.UseVisualStyleBackColor = false;
             this.getDbsToJsonInsertBtn.Click += new System.EventHandler(this.getDbsToJsonInsertBtn_Click);
             // 
+            // tabPage7
+            // 
+            this.tabPage7.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage7.Controls.Add(this.groupBox18);
+            this.tabPage7.Controls.Add(this.groupBox17);
+            this.tabPage7.Controls.Add(this.groupBox16);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(816, 445);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "tabPage7";
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.label26);
+            this.groupBox18.Controls.Add(this.textboxtargil37table);
+            this.groupBox18.Controls.Add(this.label25);
+            this.groupBox18.Controls.Add(this.textBox_targil37AmountOfObjs);
+            this.groupBox18.Controls.Add(this.textboxtargil37dbname);
+            this.groupBox18.Controls.Add(this.button_targil37);
+            this.groupBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox18.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox18.Location = new System.Drawing.Point(3, 247);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(810, 176);
+            this.groupBox18.TabIndex = 12;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "targil 37";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.White;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(70, 84);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(107, 15);
+            this.label26.TabIndex = 8;
+            this.label26.Text = "Enter Table Name";
+            // 
+            // textboxtargil37table
+            // 
+            this.textboxtargil37table.Location = new System.Drawing.Point(224, 78);
+            this.textboxtargil37table.Name = "textboxtargil37table";
+            this.textboxtargil37table.Size = new System.Drawing.Size(234, 26);
+            this.textboxtargil37table.TabIndex = 7;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.White;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(70, 45);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(130, 15);
+            this.label25.TabIndex = 6;
+            this.label25.Text = "Enter DataBase Name";
+            // 
+            // textBox_targil37AmountOfObjs
+            // 
+            this.textBox_targil37AmountOfObjs.Location = new System.Drawing.Point(315, 134);
+            this.textBox_targil37AmountOfObjs.Name = "textBox_targil37AmountOfObjs";
+            this.textBox_targil37AmountOfObjs.ReadOnly = true;
+            this.textBox_targil37AmountOfObjs.Size = new System.Drawing.Size(143, 26);
+            this.textBox_targil37AmountOfObjs.TabIndex = 2;
+            // 
+            // textboxtargil37dbname
+            // 
+            this.textboxtargil37dbname.Location = new System.Drawing.Point(224, 39);
+            this.textboxtargil37dbname.Name = "textboxtargil37dbname";
+            this.textboxtargil37dbname.Size = new System.Drawing.Size(234, 26);
+            this.textboxtargil37dbname.TabIndex = 1;
+            // 
+            // button_targil37
+            // 
+            this.button_targil37.BackColor = System.Drawing.SystemColors.GrayText;
+            this.button_targil37.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button_targil37.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_targil37.ForeColor = System.Drawing.Color.Peru;
+            this.button_targil37.Location = new System.Drawing.Point(22, 131);
+            this.button_targil37.Name = "button_targil37";
+            this.button_targil37.Size = new System.Drawing.Size(275, 30);
+            this.button_targil37.TabIndex = 0;
+            this.button_targil37.Text = "Get Objs Count in selected Db";
+            this.button_targil37.UseVisualStyleBackColor = false;
+            this.button_targil37.Click += new System.EventHandler(this.button_targil37_Click);
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.label24);
+            this.groupBox17.Controls.Add(this.textBox_targil36AmountOfObjs);
+            this.groupBox17.Controls.Add(this.textBox_targil36selectDb);
+            this.groupBox17.Controls.Add(this.button3);
+            this.groupBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox17.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox17.Location = new System.Drawing.Point(3, 109);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(810, 132);
+            this.groupBox17.TabIndex = 11;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "targil 36";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.White;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(70, 45);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(130, 15);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "Enter DataBase Name";
+            // 
+            // textBox_targil36AmountOfObjs
+            // 
+            this.textBox_targil36AmountOfObjs.Location = new System.Drawing.Point(315, 83);
+            this.textBox_targil36AmountOfObjs.Name = "textBox_targil36AmountOfObjs";
+            this.textBox_targil36AmountOfObjs.ReadOnly = true;
+            this.textBox_targil36AmountOfObjs.Size = new System.Drawing.Size(143, 26);
+            this.textBox_targil36AmountOfObjs.TabIndex = 2;
+            // 
+            // textBox_targil36selectDb
+            // 
+            this.textBox_targil36selectDb.Location = new System.Drawing.Point(224, 39);
+            this.textBox_targil36selectDb.Name = "textBox_targil36selectDb";
+            this.textBox_targil36selectDb.Size = new System.Drawing.Size(234, 26);
+            this.textBox_targil36selectDb.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.GrayText;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button3.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Peru;
+            this.button3.Location = new System.Drawing.Point(22, 80);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(275, 30);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Get Objs Count in selected Db";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.textBox_targil35);
+            this.groupBox16.Controls.Add(this.btn_targil35);
+            this.groupBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox16.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox16.Location = new System.Drawing.Point(3, 6);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(810, 97);
+            this.groupBox16.TabIndex = 10;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "targil 35";
+            // 
+            // textBox_targil35
+            // 
+            this.textBox_targil35.Location = new System.Drawing.Point(315, 43);
+            this.textBox_targil35.Name = "textBox_targil35";
+            this.textBox_targil35.ReadOnly = true;
+            this.textBox_targil35.Size = new System.Drawing.Size(143, 26);
+            this.textBox_targil35.TabIndex = 1;
+            // 
+            // btn_targil35
+            // 
+            this.btn_targil35.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btn_targil35.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_targil35.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_targil35.ForeColor = System.Drawing.Color.Peru;
+            this.btn_targil35.Location = new System.Drawing.Point(22, 40);
+            this.btn_targil35.Name = "btn_targil35";
+            this.btn_targil35.Size = new System.Drawing.Size(275, 30);
+            this.btn_targil35.TabIndex = 0;
+            this.btn_targil35.Text = "Get Objs Count in all cloud";
+            this.btn_targil35.UseVisualStyleBackColor = false;
+            this.btn_targil35.Click += new System.EventHandler(this.btn_targil35_Click);
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage8.Controls.Add(this.groupBox19);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(816, 445);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "tabPage8";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.buttongetreqdoctargil45);
+            this.groupBox19.Controls.Add(this.docidtextboxtargil45);
+            this.groupBox19.Controls.Add(this.label28);
+            this.groupBox19.Controls.Add(this.label27);
+            this.groupBox19.Controls.Add(this.comboboxtbstargil45);
+            this.groupBox19.Controls.Add(this.comboBoxdbstargil45);
+            this.groupBox19.Controls.Add(this.btn_getdbsfortargil45);
+            this.groupBox19.Controls.Add(this.richTextBoxtargil45);
+            this.groupBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox19.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox19.Location = new System.Drawing.Point(0, 6);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(810, 254);
+            this.groupBox19.TabIndex = 11;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Type Json Data Or Upload One";
+            // 
+            // buttongetreqdoctargil45
+            // 
+            this.buttongetreqdoctargil45.BackColor = System.Drawing.SystemColors.GrayText;
+            this.buttongetreqdoctargil45.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttongetreqdoctargil45.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttongetreqdoctargil45.ForeColor = System.Drawing.Color.Peru;
+            this.buttongetreqdoctargil45.Location = new System.Drawing.Point(171, 203);
+            this.buttongetreqdoctargil45.Name = "buttongetreqdoctargil45";
+            this.buttongetreqdoctargil45.Size = new System.Drawing.Size(206, 45);
+            this.buttongetreqdoctargil45.TabIndex = 14;
+            this.buttongetreqdoctargil45.Text = "get requested doc";
+            this.buttongetreqdoctargil45.UseVisualStyleBackColor = false;
+            this.buttongetreqdoctargil45.Click += new System.EventHandler(this.buttongetreqdoctargil45_Click);
+            // 
+            // docidtextboxtargil45
+            // 
+            this.docidtextboxtargil45.Location = new System.Drawing.Point(171, 146);
+            this.docidtextboxtargil45.Name = "docidtextboxtargil45";
+            this.docidtextboxtargil45.Size = new System.Drawing.Size(221, 26);
+            this.docidtextboxtargil45.TabIndex = 13;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.White;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(52, 152);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(65, 15);
+            this.label28.TabIndex = 12;
+            this.label28.Text = "type doc id";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.White;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(31, 113);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(121, 15);
+            this.label27.TabIndex = 11;
+            this.label27.Text = "tables of selected Db";
+            // 
+            // comboboxtbstargil45
+            // 
+            this.comboboxtbstargil45.FormattingEnabled = true;
+            this.comboboxtbstargil45.Location = new System.Drawing.Point(171, 107);
+            this.comboboxtbstargil45.Name = "comboboxtbstargil45";
+            this.comboboxtbstargil45.Size = new System.Drawing.Size(221, 28);
+            this.comboboxtbstargil45.TabIndex = 10;
+            // 
+            // comboBoxdbstargil45
+            // 
+            this.comboBoxdbstargil45.FormattingEnabled = true;
+            this.comboBoxdbstargil45.Location = new System.Drawing.Point(171, 53);
+            this.comboBoxdbstargil45.Name = "comboBoxdbstargil45";
+            this.comboBoxdbstargil45.Size = new System.Drawing.Size(221, 28);
+            this.comboBoxdbstargil45.TabIndex = 9;
+            this.comboBoxdbstargil45.SelectedIndexChanged += new System.EventHandler(this.comboBoxdbstargil45_SelectedIndexChanged);
+            // 
+            // btn_getdbsfortargil45
+            // 
+            this.btn_getdbsfortargil45.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btn_getdbsfortargil45.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_getdbsfortargil45.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_getdbsfortargil45.ForeColor = System.Drawing.Color.Peru;
+            this.btn_getdbsfortargil45.Location = new System.Drawing.Point(6, 39);
+            this.btn_getdbsfortargil45.Name = "btn_getdbsfortargil45";
+            this.btn_getdbsfortargil45.Size = new System.Drawing.Size(164, 53);
+            this.btn_getdbsfortargil45.TabIndex = 8;
+            this.btn_getdbsfortargil45.Text = "Get DBs for targil 45";
+            this.btn_getdbsfortargil45.UseVisualStyleBackColor = false;
+            this.btn_getdbsfortargil45.Click += new System.EventHandler(this.btn_getdbsfortargil45_Click);
+            // 
+            // richTextBoxtargil45
+            // 
+            this.richTextBoxtargil45.Location = new System.Drawing.Point(398, 25);
+            this.richTextBoxtargil45.Name = "richTextBoxtargil45";
+            this.richTextBoxtargil45.Size = new System.Drawing.Size(391, 188);
+            this.richTextBoxtargil45.TabIndex = 0;
+            this.richTextBoxtargil45.Text = "";
+            // 
             // groupBox1
             // 
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
@@ -1244,6 +1583,76 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Devs data";
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.BackColor = System.Drawing.Color.Gray;
+            this.tabPage9.Controls.Add(this.groupBox20);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(816, 445);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "matala 38";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.dataGridView1);
+            this.groupBox20.Controls.Add(this.label29);
+            this.groupBox20.Controls.Add(this.comboBox_targil38);
+            this.groupBox20.Controls.Add(this.button_targil38);
+            this.groupBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox20.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox20.Location = new System.Drawing.Point(6, 6);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(807, 433);
+            this.groupBox20.TabIndex = 7;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "targil 12";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.White;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label29.ForeColor = System.Drawing.Color.Red;
+            this.label29.Location = new System.Drawing.Point(317, 22);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(85, 15);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "All dbs objects";
+            // 
+            // comboBox_targil38
+            // 
+            this.comboBox_targil38.FormattingEnabled = true;
+            this.comboBox_targil38.Location = new System.Drawing.Point(245, 52);
+            this.comboBox_targil38.Name = "comboBox_targil38";
+            this.comboBox_targil38.Size = new System.Drawing.Size(423, 28);
+            this.comboBox_targil38.TabIndex = 2;
+            // 
+            // button_targil38
+            // 
+            this.button_targil38.BackColor = System.Drawing.SystemColors.GrayText;
+            this.button_targil38.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button_targil38.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_targil38.ForeColor = System.Drawing.Color.Peru;
+            this.button_targil38.Location = new System.Drawing.Point(55, 46);
+            this.button_targil38.Name = "button_targil38";
+            this.button_targil38.Size = new System.Drawing.Size(184, 37);
+            this.button_targil38.TabIndex = 0;
+            this.button_targil38.Text = "press Me!";
+            this.button_targil38.UseVisualStyleBackColor = false;
+            this.button_targil38.Click += new System.EventHandler(this.button_targil38_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 104);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(795, 323);
+            this.dataGridView1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -1290,6 +1699,20 @@
             this.groupBox13.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1393,6 +1816,38 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button carDataSaveBtn;
         private System.Windows.Forms.TextBox dbnameToInsertValueTargil25TextBox;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textboxtargil37table;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox_targil37AmountOfObjs;
+        private System.Windows.Forms.TextBox textboxtargil37dbname;
+        private System.Windows.Forms.Button button_targil37;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox_targil36AmountOfObjs;
+        private System.Windows.Forms.TextBox textBox_targil36selectDb;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.TextBox textBox_targil35;
+        private System.Windows.Forms.Button btn_targil35;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox comboboxtbstargil45;
+        private System.Windows.Forms.ComboBox comboBoxdbstargil45;
+        private System.Windows.Forms.Button btn_getdbsfortargil45;
+        private System.Windows.Forms.RichTextBox richTextBoxtargil45;
+        private System.Windows.Forms.Button buttongetreqdoctargil45;
+        private System.Windows.Forms.TextBox docidtextboxtargil45;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ComboBox comboBox_targil38;
+        private System.Windows.Forms.Button button_targil38;
     }
 }
 

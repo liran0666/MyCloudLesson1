@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -13,6 +14,8 @@ using System.Xml;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using MyCloudLesson1.Models;
+using MyCloudLesson1.Structures;
+using Newtonsoft.Json.Linq;
 
 namespace MyCloudLesson1
 {
@@ -25,15 +28,16 @@ namespace MyCloudLesson1
         CosmosClient myClient;
         private void activation_Btn_Click(object sender, EventArgs e)
         {
-            try { 
-            myClient = new CosmosClient(uri, primarykey);
-            MessageBox.Show("Created DB Successfully","DB Created ",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            activation_Btn.Enabled = false;
-            tabControl1.SelectedTab = tabPage2;
-            btnDbContCreate.Enabled = true;
-            
+            try
+            {
+                myClient = new CosmosClient(uri, primarykey);
+                MessageBox.Show("Created DB Successfully", "DB Created ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                activation_Btn.Enabled = false;
+                tabControl1.SelectedTab = tabPage2;
+                btnDbContCreate.Enabled = true;
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("error " + ex, "error somthing went wrong", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
@@ -41,7 +45,7 @@ namespace MyCloudLesson1
 
         //developer data catch
         String devName = ConfigurationManager.AppSettings["Devname"];
-        String devId= ConfigurationManager.AppSettings["DevId"];
+        String devId = ConfigurationManager.AppSettings["DevId"];
         String developerEmail = ConfigurationManager.AppSettings["DevEmail"];
 
         //Enviroment data catch
@@ -49,7 +53,7 @@ namespace MyCloudLesson1
         String uri = ConfigurationManager.AppSettings["URI"];
         String primarykey = ConfigurationManager.AppSettings["PrimaryKey"];
 
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -57,8 +61,8 @@ namespace MyCloudLesson1
             devid.Text = devId;
             devEmail.Text = developerEmail;
             textBoxEnvType.Text = envtype;
-            if(primarykey.Length>9)
-                textBoxPrimaryKey.Text = primarykey.Substring(0,9)+"....";
+            if (primarykey.Length > 9)
+                textBoxPrimaryKey.Text = primarykey.Substring(0, 9) + "....";
             textBoxUri.Text = uri;
             btnDbContCreate.Enabled = false;
         }
@@ -67,35 +71,36 @@ namespace MyCloudLesson1
         {
             String dbName = dataBaseTextBox.Text;
             String contName = containerTextBox.Text;
-            try { 
-            await createDataBaseAndContainer(dbName, contName);
+            try
+            {
+                await createDataBaseAndContainer(dbName, contName);
                 MessageBox.Show("Db and Container Created");
             }
             catch (Exception ex)
             {
-                MessageBox.Show( " "+ex, "error somthing went wrong", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(" " + ex, "error somthing went wrong", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
         private async Task createDataBaseAndContainer(string dbName, string contName)
         {
             if (string.IsNullOrEmpty(dbName)) return;
-            DatabaseResponse dbResponse= await myClient.CreateDatabaseIfNotExistsAsync(dbName);
+            DatabaseResponse dbResponse = await myClient.CreateDatabaseIfNotExistsAsync(dbName);
 
             HttpStatusCode dbStatus = dbResponse.StatusCode;
             if (dbStatus == HttpStatusCode.Created)
                 MessageBox.Show("DB was Created", "Db creation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 if (dbStatus == HttpStatusCode.OK)
-                    MessageBox.Show("DB was Not Created", "Db Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                 else 
-                     MessageBox.Show("DB Creation error", "Status code: "+dbResponse, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("DB was Not Created", "Db Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+                MessageBox.Show("DB Creation error", "Status code: " + dbResponse, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             if (string.IsNullOrEmpty(contName)) return;
 
             Database dbObj = dbResponse.Database;
 
-            ContainerResponse contResponse = await dbObj.CreateContainerIfNotExistsAsync(contName,"/id");
+            ContainerResponse contResponse = await dbObj.CreateContainerIfNotExistsAsync(contName, "/id");
 
             HttpStatusCode contCreationStat = contResponse.StatusCode;
 
@@ -114,7 +119,7 @@ namespace MyCloudLesson1
             numberOfDbBtn.Text = numOfDb.ToString();
         }
 
-        private async Task <int> countNumOfDbs()
+        private async Task<int> countNumOfDbs()
         {
             int numofdb = 0;
             FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
@@ -139,7 +144,7 @@ namespace MyCloudLesson1
             FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
             while (dIter.HasMoreResults)
             {
-                foreach(DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
+                foreach (DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
                 {
                     dbNamesFromSource.Add(dbNamesToAdd.Id);
                 }
@@ -163,14 +168,14 @@ namespace MyCloudLesson1
                 foreach (DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
                 {
                     Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
-                    FeedIterator<ContainerProperties> titer=dbcurr.GetContainerQueryIterator<ContainerProperties>();
+                    FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
 
                     while (titer.HasMoreResults)
                     {
                         foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
-                            tableNamesFromSource.Add(dbNamesToAdd.Id+" - "+ tbToAdd.Id);
+                            tableNamesFromSource.Add(dbNamesToAdd.Id + " - " + tbToAdd.Id);
 
-                        
+
                     }
                 }
             }
@@ -178,11 +183,11 @@ namespace MyCloudLesson1
             return tableNamesFromSource;
         }
 
-        
+
 
         private async Task<int> countTablesBtn()
         {
-            int tablesnum=0;
+            int tablesnum = 0;
 
             FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
             while (dIter.HasMoreResults)
@@ -263,7 +268,7 @@ namespace MyCloudLesson1
                         flag = true;
                 }
             }
-            if(flag)
+            if (flag)
                 MessageBox.Show("Db Exists!", "Exist Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("Db does not Exists!", "Exist Check", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -290,12 +295,12 @@ namespace MyCloudLesson1
                     flag = true;
                     Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
                     FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
-                    
 
-                    while (titer.HasMoreResults&&flag)
+
+                    while (titer.HasMoreResults && flag)
                     {
                         foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
-                        { 
+                        {
                             tablecount++;
                             if (tablecount == 3)
                             {
@@ -303,7 +308,7 @@ namespace MyCloudLesson1
                                 break;
                             }
                         }
-                        
+
 
 
                     }
@@ -320,11 +325,11 @@ namespace MyCloudLesson1
         {
             int tableamount = Convert.ToInt32(tableAmountTargil14TextBox.Text);
             tableAmountResultTargil14TextBox.Text = await getStringOfDbsWIthExactTableAmount(tableamount);
-            
+
 
         }
 
-        private async Task <string> getStringOfDbsWIthExactTableAmount(int tableamount)
+        private async Task<string> getStringOfDbsWIthExactTableAmount(int tableamount)
         {
             string namesofDbswiththatamount = "";
             int tablecount;
@@ -350,7 +355,7 @@ namespace MyCloudLesson1
                 }
             }
             if (namesofDbswiththatamount.Length == 0)
-                namesofDbswiththatamount="no Such Dbs";
+                namesofDbswiththatamount = "no Such Dbs";
             return namesofDbswiththatamount;
         }
 
@@ -368,7 +373,7 @@ namespace MyCloudLesson1
         {
             string tableNamesFromSource = "";
             bool flag;
-           
+
             FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
             while (dIter.HasMoreResults)
             {
@@ -378,29 +383,29 @@ namespace MyCloudLesson1
                     Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
                     FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
 
-                    while (titer.HasMoreResults&&flag)
+                    while (titer.HasMoreResults && flag)
                     {
                         foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
                             if (tbToAdd.Id.Length > (numOfChars))
                             {
-                                tableNamesFromSource += (dbNamesToAdd.Id+", ");
+                                tableNamesFromSource += (dbNamesToAdd.Id + ", ");
                                 flag = false;
                                 break;
                             }
-                               
+
 
 
                     }
                 }
             }
             if (tableNamesFromSource.Length == 0)
-                tableNamesFromSource=("no Such Db");
+                tableNamesFromSource = ("no Such Db");
             return tableNamesFromSource;
         }
 
         private async void getDbsToJsonInsertBtn_Click(object sender, EventArgs e)
         {
-            dbsNamesForJsonInsertComboBox.DataSource= await getDbNamesFromSource();
+            dbsNamesForJsonInsertComboBox.DataSource = await getDbNamesFromSource();
         }
 
         private async void saveDataForIsertionBtn_Click(object sender, EventArgs e)
@@ -419,16 +424,16 @@ namespace MyCloudLesson1
             liran.stations = new CabStations[1];
             liran.stations[0] = new CabStations { adress = "almog" };
 
-            await SaveDriverDataInCloudAsync(dbname,tbname,liran);
+            await SaveDriverDataInCloudAsync(dbname, tbname, liran);
         }
 
         private async Task SaveDriverDataInCloudAsync(string dbname, string tbname, Driver liran)
         {
             DatabaseResponse dbResponse = await myClient.CreateDatabaseIfNotExistsAsync(dbname);
-            if(dbResponse.StatusCode==HttpStatusCode.OK||dbResponse.StatusCode==HttpStatusCode.Created)
+            if (dbResponse.StatusCode == HttpStatusCode.OK || dbResponse.StatusCode == HttpStatusCode.Created)
             {
                 Database db = dbResponse.Database;
-                ContainerResponse contres = await db.CreateContainerIfNotExistsAsync(tbname,"/id");
+                ContainerResponse contres = await db.CreateContainerIfNotExistsAsync(tbname, "/id");
                 if (contres.StatusCode == HttpStatusCode.OK || contres.StatusCode == HttpStatusCode.Created)
                 {
                     Microsoft.Azure.Cosmos.Container cont = contres.Container;
@@ -468,5 +473,312 @@ namespace MyCloudLesson1
                 }
             }
         }
+
+        private async void btn_targil35_Click(object sender, EventArgs e)
+        {
+            int amountofobjs = await getAmountOfObjsInAccAsync();
+            textBox_targil35.Text = amountofobjs.ToString();
+        }
+
+        private async Task<int> getAmountOfObjsInAccAsync()
+        {
+            int objs = 0;
+
+            FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
+            while (dIter.HasMoreResults)
+            {
+                foreach (DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
+                {
+                    Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
+                    FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
+
+                    while (titer.HasMoreResults)
+                    {
+                        foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
+                        {
+                            Microsoft.Azure.Cosmos.Container contRef = myClient.GetContainer(dbcurr.Id, tbToAdd.Id);
+                            FeedIterator<object> biter = contRef.GetItemQueryIterator<object>();
+                            while (biter.HasMoreResults)
+                            {
+                                foreach (object currobj in await biter.ReadNextAsync())
+                                    objs++;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+
+            return objs;
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            string dbNameToSearchIn = textBox_targil36selectDb.Text;
+            int amountofobjs = await getAmountOfObjsInSelectedDbAsync(dbNameToSearchIn);
+            textBox_targil36AmountOfObjs.Text = amountofobjs.ToString();
+
+        }
+
+        private async Task<int> getAmountOfObjsInSelectedDbAsync(string dbNameToSearchIn)
+        {
+            int objs = 0;
+
+            try {
+                Database dbcurr = myClient.GetDatabase(dbNameToSearchIn);
+                FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
+
+                while (titer.HasMoreResults)
+                {
+                    foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
+                    {
+                        Microsoft.Azure.Cosmos.Container contRef = myClient.GetContainer(dbcurr.Id, tbToAdd.Id);
+                        FeedIterator<object> biter = contRef.GetItemQueryIterator<object>();
+                        while (biter.HasMoreResults)
+                        {
+                            foreach (object currobj in await biter.ReadNextAsync())
+                                objs++;
+                        }
+                    }
+
+
+                }
+
+
+            }
+            catch { MessageBox.Show("Error, no db Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            return objs;
+        }
+
+        private async void button_targil37_Click(object sender, EventArgs e)
+        {
+            string dbNameToSearchIn = textboxtargil37dbname.Text;
+            string TableNameToSearch = textboxtargil37table.Text;
+            int amountofobjs = await getAmountOfObjsInSelectedTableAsync(dbNameToSearchIn, TableNameToSearch);
+            textBox_targil37AmountOfObjs.Text = amountofobjs.ToString();
+        }
+
+        private async Task<int> getAmountOfObjsInSelectedTableAsync(string dbNameToSearchIn, string tableNameToSearch)
+        {
+            int objs = 0;
+
+            try
+            {
+                Database dbcurr = myClient.GetDatabase(dbNameToSearchIn);
+
+                Microsoft.Azure.Cosmos.Container contRef = myClient.GetContainer(dbcurr.Id, tableNameToSearch);
+                FeedIterator<object> biter = contRef.GetItemQueryIterator<object>();
+                while (biter.HasMoreResults)
+                {
+                    foreach (object currobj in await biter.ReadNextAsync())
+                        objs++;
+                }
+
+
+
+
+
+
+            }
+            catch { MessageBox.Show("Error, no db Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            return objs;
+        }
+        private async void dbsNamesForJsonInsertComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string dbfromcombotargil26 = dbsNamesForJsonInsertComboBox.Text;
+            tablessNamesForJsonInsertComboBox.DataSource = await getTableNamesToJsonSelection(dbfromcombotargil26);
+        }
+        private async Task<List<string>> getTableNamesToJsonSelection(String dbtargil26)
+        {
+
+            List<string> tableNamesFromSource = new List<string>();
+            Database dbcurr = myClient.GetDatabase(dbtargil26);
+            FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
+
+            while (titer.HasMoreResults)
+            {
+                foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
+                    tableNamesFromSource.Add(tbToAdd.Id);
+
+
+            }
+
+
+
+            return tableNamesFromSource;
+        }
+
+        private void loadJsonFileBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Open Compatible Json File";
+            ofd.Filter = "JSON files (*.json)|*.json";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                String jsoncontentstring = File.ReadAllText(ofd.FileName);
+                jsonRichTextBox.Text = jsoncontentstring;
+            }
+            else
+            {
+                MessageBox.Show("Cancel was pressed", "Cancelled", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private async void btn_getdbsfortargil45_Click(object sender, EventArgs e)
+        {
+            comboBoxdbstargil45.DataSource = await getDbNamesFromSource();
+        }
+
+        private async void comboBoxdbstargil45_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string dbname = comboBoxdbstargil45.Text;
+            comboboxtbstargil45.DataSource = await getTableNamesToJsonSelection(dbname);
+        }
+
+        private async void buttongetreqdoctargil45_Click(object sender, EventArgs e)
+        {
+            string db = comboBoxdbstargil45.Text;
+            string tb = comboboxtbstargil45.Text;
+            string id = docidtextboxtargil45.Text;
+
+
+            richTextBoxtargil45.Text = await getdatafortargil45v2(db, tb, id);
+        }
+        private async Task<string> getdatafortargil45v2(string db, string tb, string id)
+        {
+            Car car=new Car();
+            try
+            {
+                Microsoft.Azure.Cosmos.Container tbObjRef = myClient.GetContainer(db, tb);
+                ItemResponse<object> obj = await tbObjRef.ReadItemAsync<object>(id, new PartitionKey(id));
+                JToken token = (JToken)obj.Resource;
+                string type = token["ObjType"]?.ToString();
+                if (type == "Car")
+                {
+                    car = token.ToObject<Car>();
+                    return car.ToString();
+                }
+                else
+                {
+                    if (type != null)
+                        return "requested obj is of type: " + type;
+                    else
+                        return "type is null";
+                }
+            }
+            catch
+            {
+                return "NO data was found";
+            }
+        }
+        private async Task<string> getdatafortargil45(string db, string tb, string id)
+        {
+            Car car;
+            try
+            {
+                Microsoft.Azure.Cosmos.Container tbObjRef = myClient.GetContainer(db, tb);
+                ItemResponse<Car> carobj = await tbObjRef.ReadItemAsync<Car>(id, new PartitionKey(id));
+                car = carobj.Resource;
+                return car.ToString();
+            }
+            catch
+            {
+                return "NO data was found";
+            }
+        }
+
+        private async void button_targil38_Click(object sender, EventArgs e)
+        {
+            comboBox_targil38.DataSource = await getDataSourceForTargil38();
+
+            List<Matala38Classes> results = await getDataSourceForTargil38ClassView();
+            dataGridView1.DataSource = results;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach(DataGridViewColumn col in dataGridView1.Columns)
+            {
+                col.DefaultCellStyle.Font = new Font("Arial", 17);
+            }
+        }
+        private async Task<List<Matala38Classes>> getDataSourceForTargil38ClassView()
+        {
+            List<Matala38Classes> tableNamesFromSource = new List<Matala38Classes>();
+            int objcount = 0;
+            FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
+            while (dIter.HasMoreResults)
+            {
+                foreach (DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
+                {
+                    Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
+                    FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
+
+                    while (titer.HasMoreResults)
+                    {
+                        foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
+                        {
+                            objcount = 0;
+                            Microsoft.Azure.Cosmos.Container contRef = myClient.GetContainer(dbcurr.Id, tbToAdd.Id);
+                            FeedIterator<object> biter = contRef.GetItemQueryIterator<object>();
+                            while (biter.HasMoreResults)
+                            {
+                                foreach (object currobj in await biter.ReadNextAsync())
+                                {
+                                    objcount++;
+                                }
+
+                            }
+                            tableNamesFromSource.Add(new Matala38Classes { DataBaseName=dbcurr.Id,ContainerName=tbToAdd.Id,TotalNumOfObjs=objcount});
+                        }
+
+
+
+                    }
+                }
+            }
+
+            return tableNamesFromSource;
+        }
+        private async Task< List<string>> getDataSourceForTargil38()
+        {
+            List<string> tableNamesFromSource = new List<string>();
+            int objcount = 0;
+            FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
+            while (dIter.HasMoreResults)
+            {
+                foreach (DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
+                {
+                    Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
+                    FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
+
+                    while (titer.HasMoreResults)
+                    {
+                        foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
+                        {
+                            objcount = 0;
+                            Microsoft.Azure.Cosmos.Container contRef = myClient.GetContainer(dbcurr.Id, tbToAdd.Id);
+                            FeedIterator<object> biter = contRef.GetItemQueryIterator<object>();
+                            while (biter.HasMoreResults)
+                            {
+                                foreach (object currobj in await biter.ReadNextAsync())
+                                {
+                                    objcount++;
+                                }
+                                    
+                            }
+                            tableNamesFromSource.Add(dbcurr.Id + "-" + tbToAdd.Id + "-" + objcount);
+                        }
+                           
+
+
+                    }
+                }
+            }
+
+            return tableNamesFromSource;
+        } 
     }
 }
+
+
