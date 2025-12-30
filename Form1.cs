@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using CloudApp.Models;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using MyCloudLesson1.Models;
@@ -695,9 +696,9 @@ namespace MyCloudLesson1
             comboBox_targil38.DataSource = await getDataSourceForTargil38();
 
             List<Matala38Classes> results = await getDataSourceForTargil38ClassView();
-            dataGridView1.DataSource = results;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            foreach(DataGridViewColumn col in dataGridView1.Columns)
+            dataGridViewForStudentSearch.DataSource = results;
+            dataGridViewForStudentSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach(DataGridViewColumn col in dataGridViewForStudentSearch.Columns)
             {
                 col.DefaultCellStyle.Font = new Font("Arial", 17);
             }
@@ -777,7 +778,89 @@ namespace MyCloudLesson1
             }
 
             return tableNamesFromSource;
-        } 
+        }
+
+        private async void btn_getRequstedStudentsWithSelectedParams_Click(object sender, EventArgs e)
+        {
+            String nameThatStartsWith = textBox_FirstNameOfStud.Text;
+            int numOfAddrs = Convert.ToInt32( textBox_ExactNumOfAddrStudents.Text);
+            int minNumOfCourses =Convert.ToInt32( textBox_MinNumOfCoursesStudents.Text);
+
+            List<Output> resultsForStudentWithParams = await getResultsForStudentsSearchWithParams(nameThatStartsWith, numOfAddrs, minNumOfCourses);
+
+            dataGridView_StudentsSearchWithParams.DataSource = resultsForStudentWithParams;
+            dataGridView_StudentsSearchWithParams.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn col in dataGridViewForStudentSearch.Columns)
+            {
+                col.DefaultCellStyle.Font = new Font("Arial", 17);
+            }
+        }
+
+        private async Task<List<Output>> getResultsForStudentsSearchWithParams(string nameThatStartsWith, int numOfAddrs, int minNumOfCourses)
+        {
+            List<Output> studentList = new List<Output>();
+            string firstnameofstud = null;
+            Adress[] adresses;
+            Course[] courses;
+            int numOfAddrss = 0;
+            int numOfCourses = 0;
+            FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
+            while (dIter.HasMoreResults)
+            {
+                foreach (DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
+                {
+                    Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
+                    FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
+
+                    while (titer.HasMoreResults)
+                    {
+                        foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
+                        {
+                            
+                            Microsoft.Azure.Cosmos.Container contRef = myClient.GetContainer(dbcurr.Id, tbToAdd.Id);
+                            FeedIterator<Student> biter = contRef.GetItemQueryIterator<Student>();
+                            while (biter.HasMoreResults)
+                            {
+                                foreach (Student currStud in await biter.ReadNextAsync())
+                                {
+                                    firstnameofstud = currStud.FirstName;
+                                    if (string.IsNullOrEmpty(firstnameofstud) || !firstnameofstud.StartsWith(nameThatStartsWith)) continue;
+
+                                    adresses = currStud.Adresses;
+                                    if (adresses == null || adresses.Length == 0) continue;
+                                    numOfAddrss = 0;
+                                    foreach (Adress adress in adresses)
+                                        if (adress != null)
+                                            numOfAddrss++;
+                                    if (numOfAddrss != numOfAddrs) continue;
+                                    courses = currStud.courses;
+                                    if (courses == null || courses.Length == 0) continue;
+
+                                    foreach(Course course in courses)
+                                    {
+                                        if (course != null)
+                                            numOfCourses++;
+                                        if (numOfCourses == minNumOfCourses)
+                                        {
+                                            studentList.Add(new Output { DataBaseName = dbcurr.Id, ContainerName = tbToAdd.Id, FirstName=currStud.FirstName,LastName=currStud.LastName,studentId=currStud.id });
+                                        }
+                                    }
+
+
+                                }
+
+                            }
+                            
+                        }
+
+
+
+                    }
+                }
+            }
+
+            return studentList;
+        }
     }
 }
 

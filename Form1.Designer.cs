@@ -150,13 +150,23 @@
             this.comboBoxdbstargil45 = new System.Windows.Forms.ComboBox();
             this.btn_getdbsfortargil45 = new System.Windows.Forms.Button();
             this.richTextBoxtargil45 = new System.Windows.Forms.RichTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewForStudentSearch = new System.Windows.Forms.DataGridView();
             this.label29 = new System.Windows.Forms.Label();
             this.comboBox_targil38 = new System.Windows.Forms.ComboBox();
             this.button_targil38 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.btn_getRequstedStudentsWithSelectedParams = new System.Windows.Forms.Button();
+            this.textBox_FirstNameOfStud = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBox_ExactNumOfAddrStudents = new System.Windows.Forms.TextBox();
+            this.textBox_MinNumOfCoursesStudents = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.dataGridView_StudentsSearchWithParams = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -186,7 +196,10 @@
             this.groupBox19.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.groupBox20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForStudentSearch)).BeginInit();
+            this.tabPage10.SuspendLayout();
+            this.groupBox21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_StudentsSearchWithParams)).BeginInit();
             this.SuspendLayout();
             // 
             // activation_Btn
@@ -214,6 +227,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Location = new System.Drawing.Point(23, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1573,17 +1587,6 @@
             this.richTextBoxtargil45.TabIndex = 0;
             this.richTextBoxtargil45.Text = "";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Coral;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(841, 495);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Devs data";
-            // 
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.Gray;
@@ -1597,7 +1600,7 @@
             // 
             // groupBox20
             // 
-            this.groupBox20.Controls.Add(this.dataGridView1);
+            this.groupBox20.Controls.Add(this.dataGridViewForStudentSearch);
             this.groupBox20.Controls.Add(this.label29);
             this.groupBox20.Controls.Add(this.comboBox_targil38);
             this.groupBox20.Controls.Add(this.button_targil38);
@@ -1609,6 +1612,16 @@
             this.groupBox20.TabIndex = 7;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "targil 12";
+            // 
+            // dataGridViewForStudentSearch
+            // 
+            this.dataGridViewForStudentSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewForStudentSearch.Location = new System.Drawing.Point(6, 104);
+            this.dataGridViewForStudentSearch.Name = "dataGridViewForStudentSearch";
+            this.dataGridViewForStudentSearch.ReadOnly = true;
+            this.dataGridViewForStudentSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewForStudentSearch.Size = new System.Drawing.Size(795, 323);
+            this.dataGridViewForStudentSearch.TabIndex = 4;
             // 
             // label29
             // 
@@ -1644,15 +1657,127 @@
             this.button_targil38.UseVisualStyleBackColor = false;
             this.button_targil38.Click += new System.EventHandler(this.button_targil38_Click);
             // 
-            // dataGridView1
+            // groupBox1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 104);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(795, 323);
-            this.dataGridView1.TabIndex = 4;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(841, 495);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Devs data";
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage10.Controls.Add(this.groupBox21);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(816, 445);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "tabPage10";
+            // 
+            // groupBox21
+            // 
+            this.groupBox21.Controls.Add(this.dataGridView_StudentsSearchWithParams);
+            this.groupBox21.Controls.Add(this.textBox_MinNumOfCoursesStudents);
+            this.groupBox21.Controls.Add(this.label32);
+            this.groupBox21.Controls.Add(this.textBox_ExactNumOfAddrStudents);
+            this.groupBox21.Controls.Add(this.btn_getRequstedStudentsWithSelectedParams);
+            this.groupBox21.Controls.Add(this.textBox_FirstNameOfStud);
+            this.groupBox21.Controls.Add(this.label30);
+            this.groupBox21.Controls.Add(this.label31);
+            this.groupBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox21.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox21.Location = new System.Drawing.Point(3, 6);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(810, 393);
+            this.groupBox21.TabIndex = 12;
+            this.groupBox21.TabStop = false;
+            this.groupBox21.Text = "Type Json Data Or Upload One";
+            // 
+            // btn_getRequstedStudentsWithSelectedParams
+            // 
+            this.btn_getRequstedStudentsWithSelectedParams.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btn_getRequstedStudentsWithSelectedParams.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_getRequstedStudentsWithSelectedParams.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_getRequstedStudentsWithSelectedParams.ForeColor = System.Drawing.Color.Peru;
+            this.btn_getRequstedStudentsWithSelectedParams.Location = new System.Drawing.Point(598, 84);
+            this.btn_getRequstedStudentsWithSelectedParams.Name = "btn_getRequstedStudentsWithSelectedParams";
+            this.btn_getRequstedStudentsWithSelectedParams.Size = new System.Drawing.Size(206, 55);
+            this.btn_getRequstedStudentsWithSelectedParams.TabIndex = 14;
+            this.btn_getRequstedStudentsWithSelectedParams.Text = "get requested Student";
+            this.btn_getRequstedStudentsWithSelectedParams.UseVisualStyleBackColor = false;
+            this.btn_getRequstedStudentsWithSelectedParams.Click += new System.EventHandler(this.btn_getRequstedStudentsWithSelectedParams_Click);
+            // 
+            // textBox_FirstNameOfStud
+            // 
+            this.textBox_FirstNameOfStud.Location = new System.Drawing.Point(144, 33);
+            this.textBox_FirstNameOfStud.Name = "textBox_FirstNameOfStud";
+            this.textBox_FirstNameOfStud.Size = new System.Drawing.Size(167, 26);
+            this.textBox_FirstNameOfStud.TabIndex = 13;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.White;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label30.ForeColor = System.Drawing.Color.Red;
+            this.label30.Location = new System.Drawing.Point(318, 39);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(100, 15);
+            this.label30.TabIndex = 12;
+            this.label30.Text = "Num of Adresses";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.White;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label31.ForeColor = System.Drawing.Color.Red;
+            this.label31.Location = new System.Drawing.Point(17, 39);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(119, 15);
+            this.label31.TabIndex = 11;
+            this.label31.Text = "FirstNameStartsWith";
+            // 
+            // textBox_ExactNumOfAddrStudents
+            // 
+            this.textBox_ExactNumOfAddrStudents.Location = new System.Drawing.Point(424, 33);
+            this.textBox_ExactNumOfAddrStudents.Name = "textBox_ExactNumOfAddrStudents";
+            this.textBox_ExactNumOfAddrStudents.Size = new System.Drawing.Size(144, 26);
+            this.textBox_ExactNumOfAddrStudents.TabIndex = 15;
+            // 
+            // textBox_MinNumOfCoursesStudents
+            // 
+            this.textBox_MinNumOfCoursesStudents.Location = new System.Drawing.Point(697, 33);
+            this.textBox_MinNumOfCoursesStudents.Name = "textBox_MinNumOfCoursesStudents";
+            this.textBox_MinNumOfCoursesStudents.Size = new System.Drawing.Size(107, 26);
+            this.textBox_MinNumOfCoursesStudents.TabIndex = 17;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.White;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label32.ForeColor = System.Drawing.Color.Red;
+            this.label32.Location = new System.Drawing.Point(576, 39);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(115, 15);
+            this.label32.TabIndex = 16;
+            this.label32.Text = "min num of courses";
+            // 
+            // dataGridView_StudentsSearchWithParams
+            // 
+            this.dataGridView_StudentsSearchWithParams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_StudentsSearchWithParams.Location = new System.Drawing.Point(6, 145);
+            this.dataGridView_StudentsSearchWithParams.Name = "dataGridView_StudentsSearchWithParams";
+            this.dataGridView_StudentsSearchWithParams.ReadOnly = true;
+            this.dataGridView_StudentsSearchWithParams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_StudentsSearchWithParams.Size = new System.Drawing.Size(786, 228);
+            this.dataGridView_StudentsSearchWithParams.TabIndex = 18;
             // 
             // Form1
             // 
@@ -1712,7 +1837,11 @@
             this.tabPage9.ResumeLayout(false);
             this.groupBox20.ResumeLayout(false);
             this.groupBox20.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForStudentSearch)).EndInit();
+            this.tabPage10.ResumeLayout(false);
+            this.groupBox21.ResumeLayout(false);
+            this.groupBox21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_StudentsSearchWithParams)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1844,10 +1973,20 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewForStudentSearch;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox comboBox_targil38;
         private System.Windows.Forms.Button button_targil38;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.GroupBox groupBox21;
+        private System.Windows.Forms.TextBox textBox_MinNumOfCoursesStudents;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox textBox_ExactNumOfAddrStudents;
+        private System.Windows.Forms.Button btn_getRequstedStudentsWithSelectedParams;
+        private System.Windows.Forms.TextBox textBox_FirstNameOfStud;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.DataGridView dataGridView_StudentsSearchWithParams;
     }
 }
 

@@ -13,6 +13,9 @@ namespace CloudApp.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public double AvgGrade { get; set; }
+        public int SemesterNum { get; set; }
+
+        public string FacultyName { get; set; }
         public Adress[] Adresses { get; set; }
         public Course[] courses { get; set; }
 
