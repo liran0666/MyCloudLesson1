@@ -861,6 +861,75 @@ namespace MyCloudLesson1
 
             return studentList;
         }
+
+        private async void btn_Matala62A_Click(object sender, EventArgs e)
+        {
+            string requestedCourseName = textBox_CourseNameMatala62.Text;
+            string requstedTeacher = textBox_TeacherNameMatala62.Text;
+            int minGrade = Convert.ToInt32(textBox_MinGradeMatala62.Text);
+            List<OutputforTargil62> resultTargil62 = await getResultForTargil62a(requestedCourseName, requstedTeacher, minGrade);
+            dataGridView_matala62.DataSource = resultTargil62;
+            dataGridView_matala62.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn col in dataGridViewForStudentSearch.Columns)
+            {
+                col.DefaultCellStyle.Font = new Font("Arial", 17);
+            }
+        }
+
+        private async Task<List<OutputforTargil62>> getResultForTargil62a(string requestedCourseName, string requstedTeacher, int minGrade)
+        {
+            List<OutputforTargil62> studentList = new List<OutputforTargil62>();
+            
+            Course[] courses;
+            
+            FeedIterator<DatabaseProperties> dIter = myClient.GetDatabaseQueryIterator<DatabaseProperties>();
+            while (dIter.HasMoreResults)
+            {
+                foreach (DatabaseProperties dbNamesToAdd in await dIter.ReadNextAsync())
+                {
+                    Database dbcurr = myClient.GetDatabase(dbNamesToAdd.Id);
+                    FeedIterator<ContainerProperties> titer = dbcurr.GetContainerQueryIterator<ContainerProperties>();
+
+                    while (titer.HasMoreResults)
+                    {
+                        foreach (ContainerProperties tbToAdd in await titer.ReadNextAsync())
+                        {
+
+                            Microsoft.Azure.Cosmos.Container contRef = myClient.GetContainer(dbcurr.Id, tbToAdd.Id);
+                            FeedIterator<Student> biter = contRef.GetItemQueryIterator<Student>();
+                            while (biter.HasMoreResults)
+                            {
+                                foreach (Student currStud in await biter.ReadNextAsync())
+                                {
+                                    
+                                    courses = currStud.courses;
+                                    if (courses == null || courses.Length == 0) continue;
+
+                                    foreach (Course course in courses)
+                                    {
+                                        if (course == null) continue;
+                                            
+                                        if (!string.IsNullOrEmpty(course.CourseName)&&course.CourseName.Equals(requestedCourseName)&& !string.IsNullOrEmpty(course.TeacherName) && course.TeacherName.Equals(requstedTeacher)&&course.Grade>=minGrade)
+                                        {
+                                            studentList.Add(new OutputforTargil62 { DataBaseName = dbcurr.Id, ContainerName = tbToAdd.Id, FullName=currStud.FirstName+" "+currStud.LastName ,Grade=course.Grade,studentId=currStud.id});
+                                        }
+                                    }
+
+
+                                }
+
+                            }
+
+                        }
+
+
+
+                    }
+                }
+            }
+
+            return studentList;
+        }
     }
 }
 

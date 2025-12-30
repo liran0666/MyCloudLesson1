@@ -167,6 +167,24 @@
             this.textBox_MinNumOfCoursesStudents = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.dataGridView_StudentsSearchWithParams = new System.Windows.Forms.DataGridView();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.dataGridView_matala62 = new System.Windows.Forms.DataGridView();
+            this.textBox_MinGradeMatala62 = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.textBox_TeacherNameMatala62 = new System.Windows.Forms.TextBox();
+            this.btn_Matala62A = new System.Windows.Forms.Button();
+            this.textBox_CourseNameMatala62 = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.btn_applyFactor = new System.Windows.Forms.Button();
+            this.textBox_FactorMatala62 = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -200,6 +218,11 @@
             this.tabPage10.SuspendLayout();
             this.groupBox21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_StudentsSearchWithParams)).BeginInit();
+            this.tabPage11.SuspendLayout();
+            this.groupBox22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_matala62)).BeginInit();
+            this.groupBox23.SuspendLayout();
+            this.groupBox24.SuspendLayout();
             this.SuspendLayout();
             // 
             // activation_Btn
@@ -228,6 +251,7 @@
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage10);
+            this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Location = new System.Drawing.Point(23, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1779,6 +1803,209 @@
             this.dataGridView_StudentsSearchWithParams.Size = new System.Drawing.Size(786, 228);
             this.dataGridView_StudentsSearchWithParams.TabIndex = 18;
             // 
+            // tabPage11
+            // 
+            this.tabPage11.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage11.Controls.Add(this.groupBox24);
+            this.tabPage11.Controls.Add(this.groupBox23);
+            this.tabPage11.Controls.Add(this.groupBox22);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(816, 445);
+            this.tabPage11.TabIndex = 10;
+            this.tabPage11.Text = "tabPage11";
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Controls.Add(this.dataGridView_matala62);
+            this.groupBox22.Controls.Add(this.textBox_MinGradeMatala62);
+            this.groupBox22.Controls.Add(this.label33);
+            this.groupBox22.Controls.Add(this.textBox_TeacherNameMatala62);
+            this.groupBox22.Controls.Add(this.btn_Matala62A);
+            this.groupBox22.Controls.Add(this.textBox_CourseNameMatala62);
+            this.groupBox22.Controls.Add(this.label34);
+            this.groupBox22.Controls.Add(this.label35);
+            this.groupBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox22.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox22.Location = new System.Drawing.Point(3, 6);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(810, 155);
+            this.groupBox22.TabIndex = 13;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "g";
+            // 
+            // dataGridView_matala62
+            // 
+            this.dataGridView_matala62.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_matala62.Location = new System.Drawing.Point(304, 16);
+            this.dataGridView_matala62.Name = "dataGridView_matala62";
+            this.dataGridView_matala62.ReadOnly = true;
+            this.dataGridView_matala62.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_matala62.Size = new System.Drawing.Size(489, 123);
+            this.dataGridView_matala62.TabIndex = 18;
+            // 
+            // textBox_MinGradeMatala62
+            // 
+            this.textBox_MinGradeMatala62.Location = new System.Drawing.Point(144, 76);
+            this.textBox_MinGradeMatala62.Name = "textBox_MinGradeMatala62";
+            this.textBox_MinGradeMatala62.Size = new System.Drawing.Size(144, 26);
+            this.textBox_MinGradeMatala62.TabIndex = 17;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.White;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label33.ForeColor = System.Drawing.Color.Red;
+            this.label33.Location = new System.Drawing.Point(19, 76);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(63, 15);
+            this.label33.TabIndex = 16;
+            this.label33.Text = "min grade";
+            // 
+            // textBox_TeacherNameMatala62
+            // 
+            this.textBox_TeacherNameMatala62.Location = new System.Drawing.Point(144, 44);
+            this.textBox_TeacherNameMatala62.Name = "textBox_TeacherNameMatala62";
+            this.textBox_TeacherNameMatala62.Size = new System.Drawing.Size(144, 26);
+            this.textBox_TeacherNameMatala62.TabIndex = 15;
+            // 
+            // btn_Matala62A
+            // 
+            this.btn_Matala62A.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btn_Matala62A.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_Matala62A.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Matala62A.ForeColor = System.Drawing.Color.Peru;
+            this.btn_Matala62A.Location = new System.Drawing.Point(20, 110);
+            this.btn_Matala62A.Name = "btn_Matala62A";
+            this.btn_Matala62A.Size = new System.Drawing.Size(179, 39);
+            this.btn_Matala62A.TabIndex = 14;
+            this.btn_Matala62A.Text = "present student";
+            this.btn_Matala62A.UseVisualStyleBackColor = false;
+            this.btn_Matala62A.Click += new System.EventHandler(this.btn_Matala62A_Click);
+            // 
+            // textBox_CourseNameMatala62
+            // 
+            this.textBox_CourseNameMatala62.Location = new System.Drawing.Point(144, 16);
+            this.textBox_CourseNameMatala62.Name = "textBox_CourseNameMatala62";
+            this.textBox_CourseNameMatala62.Size = new System.Drawing.Size(144, 26);
+            this.textBox_CourseNameMatala62.TabIndex = 13;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.White;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(17, 50);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(83, 15);
+            this.label34.TabIndex = 12;
+            this.label34.Text = "teacher name";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.White;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label35.ForeColor = System.Drawing.Color.Red;
+            this.label35.Location = new System.Drawing.Point(17, 22);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(79, 15);
+            this.label35.TabIndex = 11;
+            this.label35.Text = "course name";
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.btn_applyFactor);
+            this.groupBox23.Controls.Add(this.textBox_FactorMatala62);
+            this.groupBox23.Controls.Add(this.label38);
+            this.groupBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox23.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox23.Location = new System.Drawing.Point(3, 161);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(810, 145);
+            this.groupBox23.TabIndex = 19;
+            this.groupBox23.TabStop = false;
+            // 
+            // btn_applyFactor
+            // 
+            this.btn_applyFactor.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btn_applyFactor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_applyFactor.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_applyFactor.ForeColor = System.Drawing.Color.Peru;
+            this.btn_applyFactor.Location = new System.Drawing.Point(304, 44);
+            this.btn_applyFactor.Name = "btn_applyFactor";
+            this.btn_applyFactor.Size = new System.Drawing.Size(394, 43);
+            this.btn_applyFactor.TabIndex = 14;
+            this.btn_applyFactor.Text = "apply factor";
+            this.btn_applyFactor.UseVisualStyleBackColor = false;
+            // 
+            // textBox_FactorMatala62
+            // 
+            this.textBox_FactorMatala62.Location = new System.Drawing.Point(139, 53);
+            this.textBox_FactorMatala62.Name = "textBox_FactorMatala62";
+            this.textBox_FactorMatala62.Size = new System.Drawing.Size(144, 26);
+            this.textBox_FactorMatala62.TabIndex = 13;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.White;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label38.ForeColor = System.Drawing.Color.Red;
+            this.label38.Location = new System.Drawing.Point(33, 59);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(74, 15);
+            this.label38.TabIndex = 11;
+            this.label38.Text = "define factor";
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.button6);
+            this.groupBox24.Controls.Add(this.textBox4);
+            this.groupBox24.Controls.Add(this.label36);
+            this.groupBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.groupBox24.ForeColor = System.Drawing.Color.Coral;
+            this.groupBox24.Location = new System.Drawing.Point(0, 308);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(810, 137);
+            this.groupBox24.TabIndex = 19;
+            this.groupBox24.TabStop = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.GrayText;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button6.Font = new System.Drawing.Font("MV Boli", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.Peru;
+            this.button6.Location = new System.Drawing.Point(312, 47);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(394, 43);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "delete the above population";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(147, 56);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(144, 26);
+            this.textBox4.TabIndex = 16;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.White;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label36.ForeColor = System.Drawing.Color.Red;
+            this.label36.Location = new System.Drawing.Point(22, 62);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(123, 15);
+            this.label36.TabIndex = 15;
+            this.label36.Text = "total students deleted";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1842,6 +2069,14 @@
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_StudentsSearchWithParams)).EndInit();
+            this.tabPage11.ResumeLayout(false);
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_matala62)).EndInit();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1987,6 +2222,24 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.DataGridView dataGridView_StudentsSearchWithParams;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.DataGridView dataGridView_matala62;
+        private System.Windows.Forms.TextBox textBox_MinGradeMatala62;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox textBox_TeacherNameMatala62;
+        private System.Windows.Forms.Button btn_Matala62A;
+        private System.Windows.Forms.TextBox textBox_CourseNameMatala62;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.GroupBox groupBox24;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.Button btn_applyFactor;
+        private System.Windows.Forms.TextBox textBox_FactorMatala62;
+        private System.Windows.Forms.Label label38;
     }
 }
 
